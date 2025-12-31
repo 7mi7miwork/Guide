@@ -1,0 +1,193 @@
+import React, { useState, useEffect } from ‘react’;
+import { BookOpen, Code, Globe, ChevronRight, Home } from ‘lucide-react’;
+
+// Translations
+const translations = {
+en: {
+title: “Minecraft Education - Coding Guide”,
+subtitle: “Learn to code with MakeCode”,
+selectLanguage: “Select Language”,
+categories: “Categories”,
+blocks: “Visual Coding (Blocks)”,
+python: “Python Coding”,
+javascript: “JavaScript Coding”,
+blocksDesc: “Learn coding with visual blocks”,
+pythonDesc: “Write code in Python”,
+javascriptDesc: “Write code in JavaScript”,
+backToHome: “Back to Home”
+},
+de: {
+title: “Minecraft Education - Programmier-Guide”,
+subtitle: “Lerne Programmieren mit MakeCode”,
+selectLanguage: “Sprache wählen”,
+categories: “Kategorien”,
+blocks: “Visuelles Programmieren (Blöcke)”,
+python: “Python Programmierung”,
+javascript: “JavaScript Programmierung”,
+blocksDesc: “Lerne Programmieren mit visuellen Blöcken”,
+pythonDesc: “Schreibe Code in Python”,
+javascriptDesc: “Schreibe Code in JavaScript”,
+backToHome: “Zurück zur Startseite”
+},
+“zh-TW”: {
+title: “Minecraft 教育版 - 程式指南”,
+subtitle: “用 MakeCode 學習程式設計”,
+selectLanguage: “選擇語言”,
+categories: “分類”,
+blocks: “視覺化程式設計（積木）”,
+python: “Python 程式設計”,
+javascript: “JavaScript 程式設計”,
+blocksDesc: “使用視覺積木學習程式設計”,
+pythonDesc: “用 Python 撰寫程式碼”,
+javascriptDesc: “用 JavaScript 撰寫程式碼”,
+backToHome: “返回首頁”
+}
+};
+
+const MinecraftGuide = () => {
+const [currentLang, setCurrentLang] = useState(‘en’);
+const [currentView, setCurrentView] = useState(‘home’);
+const t = translations[currentLang];
+
+const languages = [
+{ code: ‘en’, name: ‘English’, flag: ‘🇬🇧’ },
+{ code: ‘de’, name: ‘Deutsch’, flag: ‘🇩🇪’ },
+{ code: ‘zh-TW’, name: ‘繁體中文’, flag: ‘🇹🇼’ }
+];
+
+const categories = [
+{ id: ‘blocks’, icon: ‘🧱’, color: ‘from-green-600 to-green-700’ },
+{ id: ‘python’, icon: ‘🐍’, color: ‘from-blue-600 to-blue-700’ },
+{ id: ‘javascript’, icon: ‘⚡’, color: ‘from-yellow-600 to-yellow-700’ }
+];
+
+return (
+<div className="min-h-screen bg-gradient-to-b from-green-900 via-green-800 to-gray-900 text-white p-4">
+{/* Minecraft-style Header */}
+<div className="max-w-6xl mx-auto">
+<div className=“bg-gray-800 border-4 border-gray-600 shadow-2xl mb-6 p-6” style={{
+imageRendering: ‘pixelated’,
+boxShadow: ‘8px 8px 0px rgba(0,0,0,0.5)’
+}}>
+<div className="flex items-center justify-between">
+<div className="flex items-center gap-4">
+<div className="text-6xl">⛏️</div>
+<div>
+<h1 className=“text-4xl font-bold mb-2” style={{
+textShadow: ‘4px 4px 0px rgba(0,0,0,0.5)’,
+fontFamily: ‘system-ui’
+}}>
+{t.title}
+</h1>
+<p className="text-xl text-gray-300">{t.subtitle}</p>
+</div>
+</div>
+
+```
+        {/* Language Selector */}
+        <div className="bg-gray-700 border-2 border-gray-500 p-4">
+          <div className="flex items-center gap-2 mb-2">
+            <Globe className="w-5 h-5" />
+            <span className="font-bold">{t.selectLanguage}</span>
+          </div>
+          <div className="flex gap-2">
+            {languages.map(lang => (
+              <button
+                key={lang.code}
+                onClick={() => setCurrentLang(lang.code)}
+                className={`px-4 py-2 border-2 transition-all ${
+                  currentLang === lang.code
+                    ? 'bg-green-600 border-green-400 scale-110'
+                    : 'bg-gray-600 border-gray-500 hover:bg-gray-500'
+                }`}
+                style={{ boxShadow: '3px 3px 0px rgba(0,0,0,0.3)' }}
+              >
+                <div className="text-2xl mb-1">{lang.flag}</div>
+                <div className="text-xs">{lang.name}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Back Button */}
+    {currentView !== 'home' && (
+      <button
+        onClick={() => setCurrentView('home')}
+        className="mb-6 flex items-center gap-2 bg-gray-700 border-2 border-gray-500 px-6 py-3 hover:bg-gray-600 transition-all"
+        style={{ boxShadow: '4px 4px 0px rgba(0,0,0,0.3)' }}
+      >
+        <Home className="w-5 h-5" />
+        {t.backToHome}
+      </button>
+    )}
+
+    {/* Content Area */}
+    {currentView === 'home' ? (
+      <div className="bg-gray-800 border-4 border-gray-600 p-8" style={{
+        boxShadow: '8px 8px 0px rgba(0,0,0,0.5)'
+      }}>
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+          <BookOpen className="w-8 h-8" />
+          {t.categories}
+        </h2>
+        
+        <div className="grid md:grid-cols-3 gap-6">
+          {categories.map(cat => (
+            <button
+              key={cat.id}
+              onClick={() => setCurrentView(cat.id)}
+              className={`bg-gradient-to-b ${cat.color} border-4 border-gray-600 p-6 hover:scale-105 transition-transform`}
+              style={{ boxShadow: '6px 6px 0px rgba(0,0,0,0.5)' }}
+            >
+              <div className="text-6xl mb-4">{cat.icon}</div>
+              <h3 className="text-xl font-bold mb-2">{t[cat.id]}</h3>
+              <p className="text-gray-200 text-sm mb-4">{t[`${cat.id}Desc`]}</p>
+              <div className="flex items-center justify-center gap-2 text-white">
+                <span>Start</span>
+                <ChevronRight className="w-5 h-5" />
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    ) : (
+      <div className="bg-gray-800 border-4 border-gray-600 p-8" style={{
+        boxShadow: '8px 8px 0px rgba(0,0,0,0.5)'
+      }}>
+        <div className="flex items-center gap-4 mb-6">
+          <div className="text-5xl">
+            {currentView === 'blocks' && '🧱'}
+            {currentView === 'python' && '🐍'}
+            {currentView === 'javascript' && '⚡'}
+          </div>
+          <h2 className="text-3xl font-bold">{t[currentView]}</h2>
+        </div>
+        
+        <div className="bg-gray-700 border-2 border-gray-500 p-6 mb-6">
+          <Code className="w-12 h-12 mb-4 text-green-400" />
+          <p className="text-lg">{t[`${currentView}Desc`]}</p>
+        </div>
+
+        <div className="bg-gray-900 border-2 border-gray-600 p-6 font-mono text-sm">
+          <div className="text-green-400 mb-2">// Example code will be loaded here</div>
+          <div className="text-gray-400">// Content structure ready for your tutorials</div>
+        </div>
+      </div>
+    )}
+
+    {/* Footer */}
+    <div className="mt-6 text-center text-gray-400 text-sm">
+      <div className="bg-gray-800 border-2 border-gray-700 p-4 inline-block">
+        Built for GitHub Pages | Ready to expand
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+);
+};
+
+export default MinecraftGuide;
