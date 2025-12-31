@@ -1,0 +1,195 @@
+:root {
+    --mc-grass: #5c9d3d;
+    --mc-grass-top: #79c05a;
+    --mc-dirt: #866043;
+    --mc-dirt-shadow: #543828;
+    --mc-stone: #7a7a7a;
+    --code-bg: #1e1e1e;
+    --code-header: #333333;
+    --code-text: #d4d4d4;
+    --accent-gold: #ffcc00;
+    --pixel-font: 'VT323', monospace;
+    --code-font: 'Fira Code', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #222;
+    color: white;
+    font-family: var(--code-font);
+    line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, .logo, .btn-pixel {
+    font-family: var(--pixel-font);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Navigation */
+.top-nav {
+    background: #000;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--mc-stone);
+}
+
+.logo {
+    font-size: 2rem;
+    color: var(--mc-grass-top);
+}
+
+.lang-switcher button {
+    background: var(--mc-stone);
+    border: 2px solid #fff;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: var(--pixel-font);
+    margin-left: 5px;
+}
+
+.lang-switcher button:hover {
+    background: var(--mc-grass);
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+    border-bottom: 8px solid var(--mc-grass);
+}
+
+.hero h1 { font-size: 4rem; margin-bottom: 1rem; }
+.hero p { font-size: 1.5rem; color: #ccc; }
+
+/* Grid Cards */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.minecraft-card {
+    text-decoration: none;
+    color: white;
+    background: var(--mc-dirt);
+    border: 4px solid #000;
+    box-shadow: inset -4px -4px var(--mc-dirt-shadow), inset 4px 4px #a07d63;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.minecraft-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 4px solid #000;
+}
+
+.blocks-bg { background-image: url('https://images.unsplash.com/photo-1587573089734-09cb69c0f2b4?auto=format&fit=crop&q=80&w=600'); }
+.python-bg { background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=600'); }
+.js-bg { background-image: url('https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=600'); }
+
+.card-content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-content h2 { font-size: 2rem; margin-bottom: 1rem; }
+
+.btn-pixel {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 10px 20px;
+    background: var(--mc-grass);
+    border: 3px solid #000;
+    box-shadow: inset -3px -3px #3e6b29, inset 3px 3px #89c66d;
+    color: white;
+    cursor: pointer;
+}
+
+/* Detail Pages Layout */
+.content-wrapper {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.back-link {
+    color: var(--accent-gold);
+    text-decoration: none;
+    font-family: var(--pixel-font);
+    font-size: 1.2rem;
+}
+
+.code-window {
+    background: var(--code-bg);
+    border: 4px solid #000;
+    border-radius: 8px;
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+.code-header {
+    background: var(--code-header);
+    padding: 10px 15px;
+    display: flex;
+    gap: 8px;
+}
+
+.dot { width: 12px; height: 12px; border-radius: 50%; }
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+pre {
+    padding: 20px;
+    color: var(--code-text);
+    overflow-x: auto;
+    font-size: 1rem;
+}
+
+.explanation-box {
+    background: #333;
+    padding: 20px;
+    border-left: 6px solid var(--mc-grass);
+    margin-bottom: 2rem;
+}
+
+.screenshot-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #666;
+    margin: 1rem 0;
+    font-style: italic;
+    color: #888;
+}
+
+/* Language specific font handling */
+[lang="zh-TW"] {
+    font-family: 'Microsoft JhengHei', sans-serif;
+}
