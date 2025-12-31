@@ -1,523 +1,64 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minecraft Education Guide</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-```
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        min-height: 100vh;
-        padding-bottom: 2rem;
-    }
-
-    nav {
-        background: rgba(255, 255, 255, 0.98);
-        padding: 1rem 2rem;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    nav ul {
-        display: flex;
-        list-style: none;
-        gap: 1.5rem;
-        flex-wrap: wrap;
-        margin: 0;
-        padding: 0;
-    }
-
-    nav ul li {
-        margin: 0;
-    }
-
-    nav ul li a {
-        text-decoration: none;
-        color: #667eea;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        display: block;
-    }
-
-    nav ul li a:hover,
-    nav ul li a.active {
-        color: white;
-        background: #667eea;
-        transform: translateY(-2px);
-    }
-
-    .language-toggle {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .language-toggle label {
-        font-weight: 600;
-        color: #667eea;
-    }
-
-    #language-select {
-        padding: 0.5rem 1rem;
-        border: 2px solid #667eea;
-        border-radius: 5px;
-        background: white;
-        color: #333;
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 500;
-    }
-
-    section {
-        max-width: 1200px;
-        margin: 2rem auto;
-        padding: 3rem 2rem;
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    h1 {
-        color: #667eea;
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        text-align: center;
-    }
-
-    h2 {
-        color: #764ba2;
-        font-size: 2rem;
-        margin-bottom: 1rem;
-        border-bottom: 3px solid #667eea;
-        padding-bottom: 0.5rem;
-    }
-
-    h3 {
-        color: #667eea;
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        margin-top: 1.5rem;
-    }
-
-    p {
-        font-size: 1.1rem;
-        color: #555;
-        margin-top: 1rem;
-        line-height: 1.8;
-    }
-
-    .content-box {
-        background: #f8f9fa;
-        padding: 1.5rem;
-        border-radius: 10px;
-        margin-top: 1.5rem;
-        border-left: 4px solid #667eea;
-    }
-
-    .content-box ul {
-        margin-left: 1.5rem;
-        margin-top: 0.5rem;
-    }
-
-    .content-box li {
-        margin: 0.5rem 0;
-        color: #555;
-    }
-
-    .code-example {
-        background: #2d2d2d;
-        color: #f8f8f2;
-        padding: 1rem;
-        border-radius: 8px;
-        margin-top: 1rem;
-        overflow-x: auto;
-        font-family: 'Courier New', monospace;
-        font-size: 0.95rem;
-    }
-
-    .tip-box {
-        background: #e7f3ff;
-        border-left: 4px solid #2196f3;
-        padding: 1rem;
-        margin-top: 1rem;
-        border-radius: 5px;
-    }
-
-    .tip-box strong {
-        color: #2196f3;
-    }
-
-    @media (max-width: 768px) {
-        nav {
-            flex-direction: column;
-            padding: 1rem;
-        }
-
-        nav ul {
-            flex-direction: column;
-            gap: 0.5rem;
-            width: 100%;
-        }
-
-        nav ul li {
-            width: 100%;
-        }
-
-        nav ul li a {
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2rem;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        section {
-            margin: 1rem;
-            padding: 2rem 1rem;
-        }
-    }
-
-    footer {
-        text-align: center;
-        padding: 2rem;
-        color: white;
-        font-size: 0.9rem;
-    }
-</style>
-```
-
+    <title>Minecraft Coding Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="#home" class="nav-link active">Home</a></li>
-            <li><a href="#blocks" class="nav-link">Blocks</a></li>
-            <li><a href="#python" class="nav-link">Python</a></li>
-            <li><a href="#javascript" class="nav-link">JavaScript</a></li>
-        </ul>
-        <div class="language-toggle">
-            <label for="language-select">Language:</label>
-            <select id="language-select">
-                <option value="en">English</option>
-                <option value="de">Deutsch</option>
-                <option value="zh">繁體中文</option>
-            </select>
+<body class="main-menu">
+    <nav class="top-nav">
+        <div class="logo">MINECRAFT: CODING HUB</div>
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('en')">EN</button>
+            <button onclick="changeLanguage('de')">DE</button>
+            <button onclick="changeLanguage('zh-TW')">繁中</button>
         </div>
     </nav>
 
-```
-<section id="home">
-    <h1 data-en="Welcome to the Minecraft Education Guide" data-de="Willkommen zum Minecraft Education Guide" data-zh="歡迎來到 Minecraft Education 指南">Welcome to the Minecraft Education Guide</h1>
-    <p data-en="Your ultimate resource for learning programming with Minecraft Education Edition. Choose your path and start coding today!" data-de="Deine ultimative Ressource zum Erlernen der Programmierung mit Minecraft Education Edition. Wähle deinen Weg und beginne noch heute!" data-zh="您學習使用 Minecraft Education Edition 編程的終極資源。選擇您的路徑並立即開始！">Your ultimate resource for learning programming with Minecraft Education Edition. Choose your path and start coding today!</p>
-    
-    <div class="content-box">
-        <h3 data-en="What you'll learn:" data-de="Was du lernen wirst:" data-zh="您將學到什麼：">What you'll learn:</h3>
-        <ul>
-            <li data-en="Block-based programming for beginners" data-de="Blockbasierte Programmierung für Anfänger" data-zh="適合初學者的積木式編程">Block-based programming for beginners</li>
-            <li data-en="Python coding fundamentals and advanced techniques" data-de="Python-Grundlagen und fortgeschrittene Techniken" data-zh="Python 編程基礎和高級技術">Python coding fundamentals and advanced techniques</li>
-            <li data-en="JavaScript for creating complex game mechanics" data-de="JavaScript für komplexe Spielmechaniken" data-zh="用於創建複雜遊戲機制的 JavaScript">JavaScript for creating complex game mechanics</li>
-            <li data-en="Best practices and optimization tips" data-de="Best Practices und Optimierungstipps" data-zh="最佳實踐和優化技巧">Best practices and optimization tips</li>
-        </ul>
-    </div>
+    <header class="hero">
+        <h1 data-i18n="welcome_title">Welcome, Creator!</h1>
+        <p data-i18n="welcome_subtitle">Choose your path to master the world of Minecraft.</p>
+    </header>
 
-    <div class="tip-box">
-        <strong data-en="Getting Started:" data-de="Erste Schritte:" data-zh="入門：">Getting Started:</strong>
-        <p data-en="Open Minecraft Education Edition, press 'C' to open the Code Builder, and select your preferred programming language!" data-de="Öffne Minecraft Education Edition, drücke 'C' für den Code Builder und wähle deine bevorzugte Programmiersprache!" data-zh="打開 Minecraft Education Edition，按 'C' 打開代碼生成器，然後選擇您喜歡的編程語言！">Open Minecraft Education Edition, press 'C' to open the Code Builder, and select your preferred programming language!</p>
-    </div>
-</section>
+    <main class="grid-container">
+        <!-- Visual Blocks Card -->
+        <a href="languages/blocks/index.html" class="minecraft-card">
+            <div class="card-image blocks-bg"></div>
+            <div class="card-content">
+                <h2 data-i18n="blocks_title">Visual Blocks</h2>
+                <p data-i18n="blocks_desc">Drag, drop, and build logic like LEGO.</p>
+                <span class="btn-pixel" data-i18n="btn_start">START LEARNING</span>
+            </div>
+        </a>
 
-<section id="blocks">
-    <h2 data-en="MakeCode Blocks Programming" data-de="MakeCode Blöcke Programmierung" data-zh="MakeCode 積木編程">MakeCode Blocks Programming</h2>
-    <p data-en="Start your coding journey with visual blocks! Drag and drop programming elements to create amazing Minecraft worlds without writing any text-based code." data-de="Beginne deine Programmierreise mit visuellen Blöcken! Ziehe Programmierelemente, um erstaunliche Minecraft-Welten zu erstellen, ohne textbasierten Code zu schreiben." data-zh="使用視覺積木開始您的編碼之旅！拖放編程元素以創建令人驚嘆的 Minecraft 世界，無需編寫任何基於文本的代碼。">Start your coding journey with visual blocks! Drag and drop programming elements to create amazing Minecraft worlds without writing any text-based code.</p>
-    
-    <div class="content-box">
-        <h3 data-en="Perfect for:" data-de="Perfekt für:" data-zh="非常適合：">Perfect for:</h3>
-        <ul>
-            <li data-en="Complete beginners with no coding experience" data-de="Absolute Anfänger ohne Programmiererfahrung" data-zh="完全沒有編碼經驗的初學者">Complete beginners with no coding experience</li>
-            <li data-en="Visual learners who prefer graphical interfaces" data-de="Visuelle Lerner, die grafische Oberflächen bevorzugen" data-zh="喜歡圖形界面的視覺學習者">Visual learners who prefer graphical interfaces</li>
-            <li data-en="Quick prototyping of game ideas" data-de="Schnelles Prototyping von Spielideen" data-zh="遊戲想法的快速原型設計">Quick prototyping of game ideas</li>
-            <li data-en="Teaching programming concepts to students" data-de="Vermittlung von Programmierkonzepten an Schüler" data-zh="向學生教授編程概念">Teaching programming concepts to students</li>
-        </ul>
-    </div>
+        <!-- Python Card -->
+        <a href="languages/python/index.html" class="minecraft-card">
+            <div class="card-image python-bg"></div>
+            <div class="card-content">
+                <h2 data-i18n="python_title">Python</h2>
+                <p data-i18n="python_desc">Professional text coding for automation.</p>
+                <span class="btn-pixel" data-i18n="btn_start">START LEARNING</span>
+            </div>
+        </a>
 
-    <h3 data-en="Key Block Categories:" data-de="Wichtige Block-Kategorien:" data-zh="主要積木類別：">Key Block Categories:</h3>
-    
-    <div class="content-box">
-        <strong data-en="Player Blocks" data-de="Spieler-Blöcke" data-zh="玩家積木">Player Blocks</strong>
-        <p data-en="Control player actions, teleportation, and interactions." data-de="Steuere Spieleraktionen, Teleportation und Interaktionen." data-zh="控制玩家動作、傳送和互動。">Control player actions, teleportation, and interactions.</p>
-    </div>
+        <!-- JS Card -->
+        <a href="languages/javascript/index.html" class="minecraft-card">
+            <div class="card-image js-bg"></div>
+            <div class="card-content">
+                <h2 data-i18n="js_title">JavaScript</h2>
+                <p data-i18n="js_desc">Advanced logic and world manipulation.</p>
+                <span class="btn-pixel" data-i18n="btn_start">START LEARNING</span>
+            </div>
+        </a>
+    </main>
 
-    <div class="content-box">
-        <strong data-en="Blocks Blocks" data-de="Block-Blöcke" data-zh="方塊積木">Blocks Blocks</strong>
-        <p data-en="Place, remove, and modify blocks in your world." data-de="Platziere, entferne und modifiziere Blöcke in deiner Welt." data-zh="在您的世界中放置、刪除和修改方塊。">Place, remove, and modify blocks in your world.</p>
-    </div>
-
-    <div class="content-box">
-        <strong data-en="Logic & Loops" data-de="Logik & Schleifen" data-zh="邏輯和循環">Logic & Loops</strong>
-        <p data-en="Create conditions, loops, and complex decision-making logic." data-de="Erstelle Bedingungen, Schleifen und komplexe Entscheidungslogik." data-zh="創建條件、循環和複雜的決策邏輯。">Create conditions, loops, and complex decision-making logic.</p>
-    </div>
-
-    <div class="tip-box">
-        <strong data-en="Pro Tip:" data-de="Profi-Tipp:" data-zh="專業提示：">Pro Tip:</strong>
-        <p data-en="Use the 'on chat command' block to create custom commands that you can trigger by typing in the game chat!" data-de="Verwende den 'Bei Chat-Befehl'-Block, um benutzerdefinierte Befehle zu erstellen, die du durch Eingabe im Spiel-Chat auslösen kannst!" data-zh="使用"聊天命令時"積木創建自定義命令，您可以通過在遊戲聊天中輸入來觸發！">Use the 'on chat command' block to create custom commands that you can trigger by typing in the game chat!</p>
-    </div>
-</section>
-
-<section id="python">
-    <h2 data-en="Python in Minecraft Education" data-de="Python in Minecraft Education" data-zh="Minecraft Education 中的 Python">Python in Minecraft Education</h2>
-    <p data-en="Take your skills to the next level with Python! Write powerful scripts and automate complex tasks in Minecraft using one of the world's most popular programming languages." data-de="Bringe deine Fähigkeiten mit Python auf die nächste Stufe! Schreibe leistungsstarke Skripte und automatisiere komplexe Aufgaben in Minecraft mit einer der beliebtesten Programmiersprachen der Welt." data-zh="使用 Python 將您的技能提升到新水平！使用世界上最流行的編程語言之一在 Minecraft 中編寫強大的腳本並自動化複雜的任務。">Take your skills to the next level with Python! Write powerful scripts and automate complex tasks in Minecraft using one of the world's most popular programming languages.</p>
-    
-    <div class="content-box">
-        <h3 data-en="What you can do with Python:" data-de="Was du mit Python machen kannst:" data-zh="您可以用 Python 做什麼：">What you can do with Python:</h3>
-        <ul>
-            <li data-en="Create custom functions and reusable code" data-de="Erstelle benutzerdefinierte Funktionen und wiederverwendbaren Code" data-zh="創建自定義函數和可重用代碼">Create custom functions and reusable code</li>
-            <li data-en="Build complex structures with loops and variables" data-de="Baue komplexe Strukturen mit Schleifen und Variablen" data-zh="使用循環和變量構建複雜結構">Build complex structures with loops and variables</li>
-            <li data-en="Implement advanced game logic and mechanics" data-de="Implementiere fortgeschrittene Spiellogik und Mechaniken" data-zh="實現高級遊戲邏輯和機制">Implement advanced game logic and mechanics</li>
-            <li data-en="Process data and create smart behaviors" data-de="Verarbeite Daten und erstelle intelligente Verhaltensweisen" data-zh="處理數據並創建智能行為">Process data and create smart behaviors</li>
-        </ul>
-    </div>
-
-    <h3 data-en="Example: Build a pyramid" data-de="Beispiel: Baue eine Pyramide" data-zh="示例：建造金字塔">Example: Build a pyramid</h3>
-    <div class="code-example">
-```
-
-from mcje import *
-
-# Get player position
-
-pos = player.position()
-
-# Build a pyramid
-
-for level in range(10):
-size = 10 - level
-for x in range(-size, size + 1):
-for z in range(-size, size + 1):
-blocks.place(
-STONE,
-pos.add(Position(x, level, z))
-)
-</div>
-
-```
-    <h3 data-en="Key Python Concepts:" data-de="Wichtige Python-Konzepte:" data-zh="關鍵 Python 概念：">Key Python Concepts:</h3>
-    
-    <div class="content-box">
-        <strong data-en="Variables & Data Types" data-de="Variablen & Datentypen" data-zh="變量和數據類型">Variables & Data Types</strong>
-        <p data-en="Store and manipulate information like numbers, text, and positions." data-de="Speichere und manipuliere Informationen wie Zahlen, Text und Positionen." data-zh="存儲和操作數字、文本和位置等信息。">Store and manipulate information like numbers, text, and positions.</p>
-    </div>
-
-    <div class="content-box">
-        <strong data-en="Functions" data-de="Funktionen" data-zh="函數">Functions</strong>
-        <p data-en="Create reusable code blocks that perform specific tasks." data-de="Erstelle wiederverwendbare Codeblöcke, die bestimmte Aufgaben ausführen." data-zh="創建執行特定任務的可重用代碼塊。">Create reusable code blocks that perform specific tasks.</p>
-    </div>
-
-    <div class="content-box">
-        <strong data-en="Lists & Loops" data-de="Listen & Schleifen" data-zh="列表和循環">Lists & Loops</strong>
-        <p data-en="Work with collections of data and repeat actions efficiently." data-de="Arbeite mit Datensammlungen und wiederhole Aktionen effizient." data-zh="處理數據集合並有效地重複操作。">Work with collections of data and repeat actions efficiently.</p>
-    </div>
-
-    <div class="tip-box">
-        <strong data-en="Learning Tip:" data-de="Lerntipp:" data-zh="學習提示：">Learning Tip:</strong>
-        <p data-en="Start with simple scripts and gradually add complexity. Python's readable syntax makes it perfect for learning programming concepts!" data-de="Beginne mit einfachen Skripten und füge schrittweise Komplexität hinzu. Pythons lesbare Syntax macht es perfekt zum Lernen von Programmierkonzepten!" data-zh="從簡單的腳本開始，逐步增加複雜性。Python 的可讀語法使其非常適合學習編程概念！">Start with simple scripts and gradually add complexity. Python's readable syntax makes it perfect for learning programming concepts!</p>
-    </div>
-</section>
-
-<section id="javascript">
-    <h2 data-en="JavaScript Development" data-de="JavaScript-Entwicklung" data-zh="JavaScript 開發">JavaScript Development</h2>
-    <p data-en="Master advanced programming with JavaScript! Create sophisticated mods, interactive experiences, and complex game systems in Minecraft Education Edition." data-de="Meistere fortgeschrittene Programmierung mit JavaScript! Erstelle ausgefeilte Mods, interaktive Erlebnisse und komplexe Spielsysteme in Minecraft Education Edition." data-zh="使用 JavaScript 掌握高級編程！在 Minecraft Education Edition 中創建複雜的模組、互動體驗和複雜的遊戲系統。">Master advanced programming with JavaScript! Create sophisticated mods, interactive experiences, and complex game systems in Minecraft Education Edition.</p>
-    
-    <div class="content-box">
-        <h3 data-en="Advanced JavaScript Features:" data-de="Erweiterte JavaScript-Funktionen:" data-zh="高級 JavaScript 功能：">Advanced JavaScript Features:</h3>
-        <ul>
-            <li data-en="Event-driven programming and listeners" data-de="Ereignisgesteuerte Programmierung und Listener" data-zh="事件驅動編程和監聽器">Event-driven programming and listeners</li>
-            <li data-en="Object-oriented programming concepts" data-de="Objektorientierte Programmierkonzepte" data-zh="面向對象的編程概念">Object-oriented programming concepts</li>
-            <li data-en="Asynchronous operations and callbacks" data-de="Asynchrone Operationen und Callbacks" data-zh="異步操作和回調">Asynchronous operations and callbacks</li>
-            <li data-en="Complex data structures and algorithms" data-de="Komplexe Datenstrukturen und Algorithmen" data-zh="複雜的數據結構和算法">Complex data structures and algorithms</li>
-        </ul>
-    </div>
-
-    <h3 data-en="Example: Create a custom game mode" data-de="Beispiel: Erstelle einen benutzerdefinierten Spielmodus" data-zh="示例：創建自定義遊戲模式">Example: Create a custom game mode</h3>
-    <div class="code-example">
-```
-
-// Listen for player chat commands
-player.onChat(“startgame”, function() {
-// Initialize game variables
-let score = 0;
-let timeLeft = 60;
-
-```
-// Set up game timer
-loops.forever(function() {
-    if (timeLeft > 0) {
-        timeLeft -= 1;
-        player.say("Time: " + timeLeft);
-        loops.pause(1000);
-    } else {
-        player.say("Game Over! Score: " + score);
-    }
-});
-
-// Place target blocks
-for (let i = 0; i < 10; i++) {
-    blocks.place(GOLD_BLOCK, 
-        randpos(pos(-20, 0, -20), 
-                pos(20, 20, 20)));
-}
-```
-
-});
-</div>
-
-```
-    <h3 data-en="JavaScript Essentials:" data-de="JavaScript-Grundlagen:" data-zh="JavaScript 基礎：">JavaScript Essentials:</h3>
-    
-    <div class="content-box">
-        <strong data-en="Event Handlers" data-de="Event-Handler" data-zh="事件處理程序">Event Handlers</strong>
-        <p data-en="Respond to player actions, block changes, and game events in real-time." data-de="Reagiere in Echtzeit auf Spieleraktionen, Blockänderungen und Spielereignisse." data-zh="實時響應玩家動作、方塊更改和遊戲事件。">Respond to player actions, block changes, and game events in real-time.</p>
-    </div>
-
-    <div class="content-box">
-        <strong data-en="Arrays & Objects" data-de="Arrays & Objekte" data-zh="數組和對象">Arrays & Objects</strong>
-        <p data-en="Organize complex data and create custom game entities." data-de="Organisiere komplexe Daten und erstelle benutzerdefinierte Spielentitäten." data-zh="組織複雜數據並創建自定義遊戲實體。">Organize complex data and create custom game entities.</p>
-    </div>
-
-    <div class="content-box">
-        <strong data-en="Functions & Scope" data-de="Funktionen & Gültigkeitsbereich" data-zh="函數和作用域">Functions & Scope</strong>
-        <p data-en="Write modular, maintainable code with proper variable scoping." data-de="Schreibe modularen, wartbaren Code mit korrektem Variablen-Scope." data-zh="編寫具有適當變量作用域的模塊化、可維護代碼。">Write modular, maintainable code with proper variable scoping.</p>
-    </div>
-
-    <div class="tip-box">
-        <strong data-en="Advanced Tip:" data-de="Fortgeschrittener Tipp:" data-zh="高級提示：">Advanced Tip:</strong>
-        <p data-en="Use JavaScript's callback functions to create complex, multi-step game mechanics that respond dynamically to player actions!" data-de="Verwende JavaScripts Callback-Funktionen, um komplexe, mehrstufige Spielmechaniken zu erstellen, die dynamisch auf Spieleraktionen reagieren!" data-zh="使用 JavaScript 的回調函數創建複雜的多步驟遊戲機制，動態響應玩家動作！">Use JavaScript's callback functions to create complex, multi-step game mechanics that respond dynamically to player actions!</p>
-    </div>
-</section>
-
-<footer>
-    <p data-en="© 2024 Minecraft Education Guide | Created for learners worldwide | Happy Coding!" data-de="© 2024 Minecraft Education Guide | Erstellt für Lernende weltweit | Viel Spaß beim Programmieren!" data-zh="© 2024 Minecraft Education 指南 | 為全世界的學習者創建 | 編程愉快！">© 2024 Minecraft Education Guide | Created for learners worldwide | Happy Coding!</p>
-</footer>
-
-<script>
-    // Language switcher functionality
-    const languageSelect = document.getElementById('language-select');
-    const translationElements = document.querySelectorAll('[data-en]');
-    
-    // Load saved language or default to English
-    const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
-    languageSelect.value = savedLanguage;
-    updateLanguage(savedLanguage);
-
-    // Listen for language changes
-    languageSelect.addEventListener('change', function() {
-        const selectedLanguage = this.value;
-        updateLanguage(selectedLanguage);
-        localStorage.setItem('preferredLanguage', selectedLanguage);
-    });
-
-    // Update all text based on selected language
-    function updateLanguage(language) {
-        document.documentElement.lang = language;
-        translationElements.forEach(function(element) {
-            const translatedText = element.getAttribute('data-' + language);
-            if (translatedText) {
-                element.textContent = translatedText;
-            }
-        });
-    }
-
-    // Navigation functionality
-    const navigationLinks = document.querySelectorAll('.nav-link');
-    
-    navigationLinks.forEach(function(link) {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const navigationBar = document.querySelector('nav');
-                const navHeight = navigationBar.offsetHeight;
-                const targetPosition = targetSection.offsetTop - navHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Update active state
-                navigationLinks.forEach(function(navLink) {
-                    navLink.classList.remove('active');
-                });
-                this.classList.add('active');
-            }
-        });
-    });
-
-    // Active section highlighting on scroll
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('section');
-        const navigationBar = document.querySelector('nav');
-        const navHeight = navigationBar.offsetHeight;
-        const scrollPosition = window.scrollY;
-        
-        sections.forEach(function(section) {
-            const sectionTop = section.offsetTop - navHeight - 100;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                navigationLinks.forEach(function(link) {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + sectionId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    });
-
-    // Set initial active state based on URL hash
-    if (window.location.hash) {
-        const activeLink = document.querySelector('.nav-link[href="' + window.location.hash + '"]');
-        if (activeLink) {
-            navigationLinks.forEach(function(link) {
-                link.classList.remove('active');
-            });
-            activeLink.classList.add('active');
-        }
-    }
-</script>
-```
-
+    <script src="assets/js/i18n.js"></script>
+    <script>
+        // Set context for root level
+        window.i18nPathPrefix = '';
+        initLanguage();
+    </script>
 </body>
 </html>

@@ -1,0 +1,20 @@
+{
+  "name": "minecraft-coding-hub",
+  "version": "1.0.0",
+  "description": "An educational platform for learning Minecraft coding in Blocks, Python, and JavaScript.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/user/minecraft-coding-hub.git"
+  },
+  "keywords": [
+    "minecraft",
+    "education",
+    "coding",
+    "blocks",
+    "python",
+    "javascript",
+    "i18n"
+  ],
+  "author": "Minecraft Coding Hub Contributor",
+  "license": "MIT"
+}
