@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide Project</title>
+    <title>Minecraft Education Guide</title>
     <style>
         * {
             margin: 0;
@@ -13,6 +13,10 @@
         }
 
 ```
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.6;
@@ -22,7 +26,7 @@
     }
 
     nav {
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.98);
         padding: 1rem 2rem;
         position: sticky;
         top: 0;
@@ -32,12 +36,13 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+        gap: 1rem;
     }
 
     nav ul {
         display: flex;
         list-style: none;
-        gap: 2rem;
+        gap: 1.5rem;
         flex-wrap: wrap;
     }
 
@@ -45,14 +50,17 @@
         text-decoration: none;
         color: #667eea;
         font-weight: 600;
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
         padding: 0.5rem 1rem;
         border-radius: 5px;
+        display: block;
     }
 
-    nav ul li a:hover {
-        color: #764ba2;
-        background: rgba(102, 126, 234, 0.1);
+    nav ul li a:hover,
+    nav ul li a.active {
+        color: white;
+        background: #667eea;
+        transform: translateY(-2px);
     }
 
     .language-toggle {
@@ -61,14 +69,30 @@
         gap: 0.5rem;
     }
 
+    .language-toggle label {
+        font-weight: 600;
+        color: #667eea;
+    }
+
     #language-select {
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
         border: 2px solid #667eea;
         border-radius: 5px;
         background: white;
         color: #333;
         cursor: pointer;
         font-size: 1rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    #language-select:hover {
+        background: #f0f0f0;
+    }
+
+    #language-select:focus {
+        outline: none;
+        border-color: #764ba2;
     }
 
     section {
@@ -78,18 +102,6 @@
         background: white;
         border-radius: 15px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        animation: fadeIn 0.6s ease-in;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 
     h1 {
@@ -97,6 +109,7 @@
         font-size: 2.5rem;
         margin-bottom: 1rem;
         text-align: center;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
 
     h2 {
@@ -111,19 +124,51 @@
         font-size: 1.1rem;
         color: #555;
         margin-top: 1rem;
+        line-height: 1.8;
+    }
+
+    .content-box {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-top: 1rem;
+        border-left: 4px solid #667eea;
+    }
+
+    .content-box h3 {
+        color: #667eea;
+        margin-bottom: 0.5rem;
+    }
+
+    .content-box ul {
+        margin-left: 1.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .content-box li {
+        margin: 0.5rem 0;
+        color: #555;
     }
 
     @media (max-width: 768px) {
         nav {
             flex-direction: column;
-            gap: 1rem;
+            padding: 1rem;
         }
 
         nav ul {
             flex-direction: column;
             gap: 0.5rem;
             width: 100%;
+        }
+
+        nav ul li {
+            width: 100%;
+        }
+
+        nav ul li a {
             text-align: center;
+            width: 100%;
         }
 
         h1 {
@@ -139,6 +184,14 @@
             padding: 2rem 1rem;
         }
     }
+
+    footer {
+        text-align: center;
+        padding: 2rem;
+        color: white;
+        font-size: 0.9rem;
+        margin-top: 2rem;
+    }
 </style>
 ```
 
@@ -146,15 +199,15 @@
 <body>
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#blocks">Blocks</a></li>
-            <li><a href="#python">Python</a></li>
-            <li><a href="#javascript">JavaScript</a></li>
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#blocks" class="nav-link">Blocks</a></li>
+            <li><a href="#python" class="nav-link">Python</a></li>
+            <li><a href="#javascript" class="nav-link">JavaScript</a></li>
         </ul>
         <div class="language-toggle">
             <label for="language-select">Language:</label>
             <select id="language-select">
-                <option value="en" selected>English</option>
+                <option value="en">English</option>
                 <option value="de">Deutsch</option>
                 <option value="zh">繁體中文</option>
             </select>
@@ -163,87 +216,190 @@
 
 ```
 <section id="home">
-    <h1 data-en="Welcome to the Guide Project" 
-        data-de="Willkommen zum Guide Projekt" 
-        data-zh="歡迎來到指南項目">Welcome to the Guide Project</h1>
-    <p data-en="This is your ultimate guide to Minecraft Education MakeCode." 
-       data-de="Dies ist dein ultimativer Leitfaden für Minecraft Education MakeCode." 
-       data-zh="這是您的 Minecraft Education MakeCode 終極指南。">This is your ultimate guide to Minecraft Education MakeCode.</p>
+    <h1 class="translate" 
+        data-en="Welcome to the Minecraft Education Guide" 
+        data-de="Willkommen zum Minecraft Education Guide" 
+        data-zh="歡迎來到 Minecraft Education 指南">Welcome to the Minecraft Education Guide</h1>
+    <p class="translate" 
+       data-en="Your ultimate resource for learning programming with Minecraft Education Edition. Choose your path and start coding today!" 
+       data-de="Deine ultimative Ressource zum Erlernen der Programmierung mit Minecraft Education Edition. Wähle deinen Weg und beginne noch heute mit dem Programmieren!" 
+       data-zh="您學習使用 Minecraft Education Edition 編程的終極資源。選擇您的路徑並立即開始編碼！">Your ultimate resource for learning programming with Minecraft Education Edition. Choose your path and start coding today!</p>
+    
+    <div class="content-box">
+        <h3 class="translate" 
+            data-en="What you'll learn:" 
+            data-de="Was du lernen wirst:" 
+            data-zh="您將學到什麼：">What you'll learn:</h3>
+        <ul>
+            <li class="translate" 
+                data-en="Block-based programming for beginners" 
+                data-de="Blockbasierte Programmierung für Anfänger" 
+                data-zh="適合初學者的積木式編程">Block-based programming for beginners</li>
+            <li class="translate" 
+                data-en="Python coding fundamentals" 
+                data-de="Python-Programmiergrundlagen" 
+                data-zh="Python 編程基礎">Python coding fundamentals</li>
+            <li class="translate" 
+                data-en="JavaScript for advanced users" 
+                data-de="JavaScript für Fortgeschrittene" 
+                data-zh="適合進階用戶的 JavaScript">JavaScript for advanced users</li>
+        </ul>
+    </div>
 </section>
 
 <section id="blocks">
-    <h2 data-en="MakeCode Blocks" 
-        data-de="MakeCode Blöcke" 
-        data-zh="MakeCode 積木">MakeCode Blocks</h2>
-    <p data-en="Learn about programming with blocks in Minecraft Education." 
-       data-de="Lerne über das Programmieren mit Blöcken in Minecraft Education." 
-       data-zh="學習在 Minecraft Education 中使用積木編程。">Learn about programming with blocks in Minecraft Education.</p>
+    <h2 class="translate" 
+        data-en="MakeCode Blocks Programming" 
+        data-de="MakeCode Blöcke Programmierung" 
+        data-zh="MakeCode 積木編程">MakeCode Blocks Programming</h2>
+    <p class="translate" 
+       data-en="Start your coding journey with visual blocks! Drag and drop programming elements to create amazing Minecraft worlds." 
+       data-de="Beginne deine Programmierreise mit visuellen Blöcken! Ziehe Programmierelemente per Drag & Drop, um erstaunliche Minecraft-Welten zu erstellen." 
+       data-zh="使用視覺積木開始您的編碼之旅！拖放編程元素以創建令人驚嘆的 Minecraft 世界。">Start your coding journey with visual blocks! Drag and drop programming elements to create amazing Minecraft worlds.</p>
+    
+    <div class="content-box">
+        <h3 class="translate" 
+            data-en="Perfect for:" 
+            data-de="Perfekt für:" 
+            data-zh="非常適合：">Perfect for:</h3>
+        <ul>
+            <li class="translate" 
+                data-en="Complete beginners with no coding experience" 
+                data-de="Absolute Anfänger ohne Programmiererfahrung" 
+                data-zh="完全沒有編碼經驗的初學者">Complete beginners with no coding experience</li>
+            <li class="translate" 
+                data-en="Visual learners who prefer graphical interfaces" 
+                data-de="Visuelle Lerner, die grafische Oberflächen bevorzugen" 
+                data-zh="喜歡圖形界面的視覺學習者">Visual learners who prefer graphical interfaces</li>
+            <li class="translate" 
+                data-en="Quick prototyping of game ideas" 
+                data-de="Schnelles Prototyping von Spielideen" 
+                data-zh="遊戲想法的快速原型設計">Quick prototyping of game ideas</li>
+        </ul>
+    </div>
 </section>
 
 <section id="python">
-    <h2 data-en="MakeCode Python" 
-        data-de="MakeCode Python" 
-        data-zh="MakeCode Python">MakeCode Python</h2>
-    <p data-en="Explore Python coding for Minecraft Education." 
-       data-de="Erkunde Python-Programmierung für Minecraft Education." 
-       data-zh="探索 Minecraft Education 的 Python 編程。">Explore Python coding for Minecraft Education.</p>
+    <h2 class="translate" 
+        data-en="Python in Minecraft Education" 
+        data-de="Python in Minecraft Education" 
+        data-zh="Minecraft Education 中的 Python">Python in Minecraft Education</h2>
+    <p class="translate" 
+       data-en="Take your skills to the next level with Python! Write powerful scripts and automate complex tasks in Minecraft." 
+       data-de="Bringe deine Fähigkeiten mit Python auf die nächste Stufe! Schreibe leistungsstarke Skripte und automatisiere komplexe Aufgaben in Minecraft." 
+       data-zh="使用 Python 將您的技能提升到新水平！在 Minecraft 中編寫強大的腳本並自動化複雜的任務。">Take your skills to the next level with Python! Write powerful scripts and automate complex tasks in Minecraft.</p>
+    
+    <div class="content-box">
+        <h3 class="translate" 
+            data-en="What you can do:" 
+            data-de="Was du tun kannst:" 
+            data-zh="您可以做什麼：">What you can do:</h3>
+        <ul>
+            <li class="translate" 
+                data-en="Create custom functions and commands" 
+                data-de="Erstelle benutzerdefinierte Funktionen und Befehle" 
+                data-zh="創建自定義函數和命令">Create custom functions and commands</li>
+            <li class="translate" 
+                data-en="Build structures programmatically" 
+                data-de="Baue Strukturen programmgesteuert" 
+                data-zh="以編程方式構建結構">Build structures programmatically</li>
+            <li class="translate" 
+                data-en="Implement game logic and mechanics" 
+                data-de="Implementiere Spiellogik und Mechaniken" 
+                data-zh="實現遊戲邏輯和機制">Implement game logic and mechanics</li>
+        </ul>
+    </div>
 </section>
 
 <section id="javascript">
-    <h2 data-en="MakeCode JavaScript" 
-        data-de="MakeCode JavaScript" 
-        data-zh="MakeCode JavaScript">MakeCode JavaScript</h2>
-    <p data-en="Discover JavaScript programming in Minecraft Education." 
-       data-de="Entdecke JavaScript-Programmierung in Minecraft Education." 
-       data-zh="探索 Minecraft Education 中的 JavaScript 編程。">Discover JavaScript programming in Minecraft Education.</p>
+    <h2 class="translate" 
+        data-en="JavaScript Development" 
+        data-de="JavaScript-Entwicklung" 
+        data-zh="JavaScript 開發">JavaScript Development</h2>
+    <p class="translate" 
+       data-en="Master advanced programming with JavaScript! Create sophisticated mods and interactive experiences in Minecraft Education." 
+       data-de="Meistere fortgeschrittene Programmierung mit JavaScript! Erstelle ausgefeilte Mods und interaktive Erlebnisse in Minecraft Education." 
+       data-zh="使用 JavaScript 掌握高級編程！在 Minecraft Education 中創建複雜的模組和互動體驗。">Master advanced programming with JavaScript! Create sophisticated mods and interactive experiences in Minecraft Education.</p>
+    
+    <div class="content-box">
+        <h3 class="translate" 
+            data-en="Advanced features:" 
+            data-de="Erweiterte Funktionen:" 
+            data-zh="高級功能：">Advanced features:</h3>
+        <ul>
+            <li class="translate" 
+                data-en="Event-driven programming" 
+                data-de="Ereignisgesteuerte Programmierung" 
+                data-zh="事件驅動編程">Event-driven programming</li>
+            <li class="translate" 
+                data-en="Complex data structures and algorithms" 
+                data-de="Komplexe Datenstrukturen und Algorithmen" 
+                data-zh="複雜的數據結構和算法">Complex data structures and algorithms</li>
+            <li class="translate" 
+                data-en="Integration with external APIs" 
+                data-de="Integration mit externen APIs" 
+                data-zh="與外部 API 集成">Integration with external APIs</li>
+        </ul>
+    </div>
 </section>
 
+<footer>
+    <p class="translate" 
+       data-en="© 2024 Minecraft Education Guide | Happy Coding!" 
+       data-de="© 2024 Minecraft Education Guide | Viel Spaß beim Programmieren!" 
+       data-zh="© 2024 Minecraft Education 指南 | 編程愉快！">© 2024 Minecraft Education Guide | Happy Coding!</p>
+</footer>
+
 <script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+    // Language switcher
+    const languageSelect = document.getElementById('language-select');
+    const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+    languageSelect.value = savedLang;
+    updateLanguage(savedLang);
+
+    languageSelect.addEventListener('change', function() {
+        updateLanguage(this.value);
+        localStorage.setItem('preferredLanguage', this.value);
+    });
+
+    function updateLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll('.translate').forEach(el => {
+            const text = el.getAttribute('data-' + lang);
+            if (text) el.textContent = text;
+        });
+    }
+
+    // Navigation
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const navHeight = document.querySelector('nav').offsetHeight;
+                window.scrollTo({
+                    top: target.offsetTop - navHeight,
+                    behavior: 'smooth'
                 });
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
             }
         });
     });
 
-    // Language switcher
-    const languageSelect = document.getElementById('language-select');
-    
-    languageSelect.addEventListener('change', function() {
-        const lang = this.value;
-        document.documentElement.lang = lang;
+    // Active section highlighting
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section');
+        const navHeight = document.querySelector('nav').offsetHeight;
         
-        // Update all elements with language attributes
-        document.querySelectorAll('[data-' + lang + ']').forEach(element => {
-            element.textContent = element.getAttribute('data-' + lang);
-        });
-    });
-
-    // Add active state to current section in nav
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a');
-
-    window.addEventListener('scroll', () => {
-        let current = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 100)) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.style.background = '';
-            if (link.getAttribute('href').slice(1) === current) {
-                link.style.background = 'rgba(102, 126, 234, 0.1)';
+            const top = section.offsetTop - navHeight - 100;
+            const bottom = top + section.offsetHeight;
+            
+            if (window.scrollY >= top && window.scrollY < bottom) {
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                const activeLink = document.querySelector(`.nav-link[href="#${section.id}"]`);
+                if (activeLink) activeLink.classList.add('active');
             }
         });
     });
