@@ -1,1 +1,22 @@
-
+{
+    "welcome_title": "Willkommen, Schöpfer!",
+    "welcome_subtitle": "Wähle deinen Pfad, um die Welt von Minecraft zu meistern.",
+    "blocks_title": "Visuelle Blöcke",
+    "blocks_desc": "Ziehe Befehle zusammen wie LEGO-Steine.",
+    "python_title": "Python",
+    "python_desc": "Echte Text-Programmierung für Automatisierung.",
+    "js_title": "JavaScript",
+    "js_desc": "Fortgeschrittene Logik und Welt-Manipulation.",
+    "btn_start": "JETZT LERNEN",
+    "back_to_hub": "< Zurück zum Hub",
+    "blocks_intro": "Visuelle Blöcke sind der beste Start. Du nutzt den 'MakeCode' Editor, um Logik-Teile zu verbinden.",
+    "blocks_lesson1_title": "Ereignisse (Events)",
+    "blocks_lesson1_desc": "In Minecraft ist ein Ereignis etwas, das passiert – zum Beispiel, wenn ein Spieler springt. Das ist der Auslöser für deinen Code.",
+    "python_intro": "Python ist eine mächtige Sprache, die von Profis genutzt wird. In Minecraft ist sie perfekt für komplexes Bauen.",
+    "python_lesson1_title": "Die Agenten-Schleife",
+    "python_lesson1_desc": "Dein Agent ist ein kleiner Roboter. Mit einer 'for'-Schleife kannst du ihn Aufgaben automatisch wiederholen lassen.",
+    "js_intro": "JavaScript (und TypeScript) ist der Motor hinter den fortgeschrittenen Funktionen der Minecraft: Education Edition.",
+    "js_lesson1_title": "Koordinaten & Mathematik",
+    "js_lesson1_desc": "Alles in Minecraft passiert an Koordinaten: X (West/Ost), Y (Oben/Unten) und Z (Nord/Süd).",
+    "screenshot_alt": "Hier Screenshot aus Minecraft einfügen"
+}
